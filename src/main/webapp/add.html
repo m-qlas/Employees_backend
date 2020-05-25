@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>SpringBootApp</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="navbar.js"></script>
+    <script defer src="scriptAdd.js"></script>
+    <style>
+        body {
+            padding-top: 3.5rem;
+        }
+
+        .jumbotron {
+            max-height: 200px;
+            padding: 1.5em;
+        }
+    </style>
+</head>
+
+<body>
+    <nav></nav>
+    <div class="jumbotron">
+        <div class="container">
+            <h2 class="display-4">Hello Aliens!</h2>
+            <p>Test database SpringBoot Rest App</p>
+            <p>Insert Alien data to add new entity</p>
+        </div>
+    </div>
+    <div class="container">
+
+        <form class="needs-validation" novalidate>
+            <div class="row">
+                <div class="col">
+                    <fieldset>
+                        <legend>Alien:</legend>
+                        <label for="aId" class="mr-sm-2">Alien ID:</label>
+                        <input type="text" class="form-control mb-2 mr-sm-2" placeholder="Enter ID" name="aId" id="aId"
+                            required>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Please fill out this field.</div>
+    
+                        <label for="aName" class="mr-sm-2">Name:</label>
+                        <input type="text" class="form-control mb-2 mr-sm-2" placeholder="Enter name" name="aName"
+                            id="aName" required>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Please fill out this field.</div>
+    
+                        <label for="tech" class="mr-sm-2">Technology:</label>
+                        <input type="text" class="form-control mb-2 mr-sm-2" placeholder="Enter tech" name="aTech" id="aTech"
+                            required>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Please fill out this field.</div>
+                    </fieldset>
+                </div>
+
+                <div class="col">
+                    <fieldset>
+                        <legend>Laptop:</legend>
+
+                        <label for="lId" class="mr-sm-2">Laptop ID:</label>
+                        <input type="text" class="form-control mb-2 mr-sm-2" placeholder="Enter ID"
+                            name="laptops[1][lId]" id="lId" required>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Please fill out this field.</div>
+
+                        <label for="lName" class="mr-sm-2">Name:</label>
+                        <input type="text" class="form-control mb-2 mr-sm-2" placeholder="Enter name"
+                            name="laptops[1][lName]" id="lName" required>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Please fill out this field.</div>
+
+                        <label for="processor" class="mr-sm-2">Processor:</label>
+                        <input type="text" class="form-control mb-2 mr-sm-2" placeholder="Enter processor"
+                            name="laptops[1][processor]" id="processor" required>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Please fill out this field.</div>
+
+                        <label for="ram" class="mr-sm-2">Ram:</label>
+                        <input type="text" class="form-control mb-2 mr-sm-2" placeholder="Enter amount of ram"
+                            name="laptops[1][ram]" id="ram" required>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Please fill out this field.</div>
+                    </fieldset>
+                </div>
+            </div>
+
+
+
+
+            <div class="row">
+                <div class="col">
+                    <button type="button" class="btn btn-primary mb-2">Add Alien</button>
+                </div>
+            </div>
+        </form>
+        <br>
+
+    </div>
+</body>
+
+</html>
