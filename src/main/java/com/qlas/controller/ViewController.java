@@ -8,6 +8,7 @@ public class ViewController {
 
 	@RequestMapping("/")
 	public String view() {
+		System.out.println("Function started");
 		return "index.html";
 	}
 }

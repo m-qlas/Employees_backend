@@ -9,8 +9,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-    <script src="indexScript.js"></script>
-    <script src="navbar.js"></script>
+    <script defer src="navbar.js"></script>
+    <script defer src="indexScript.js"></script>
+    
     
     <style>
         body {
@@ -30,18 +31,26 @@
         <div class="container">
             <h2 class="display-4">Hello!</h2>
             <p>Test database SpringBoot Rest App</p>
-            <p>Login to the app or enter without login</p>
+            <p>Login to the app to edit data or enter without login to view data</p>
+            
 
         </div>
     </div>
-    <div class="container bg-dark text-white">
+    <div class="container ">
         <div class="row">
             <div class="col">
                 <h2 class="text-center">Login</h2>
+                <form>
+                    <label for="login" class="mr-sm-2">Login</label>
+                    <input type="text" class="form-control mb-2 mr-sm-2" placeholder="Enter login" name="login" id="login">
+                    <label for="pass" class="mr-sm-2">Name:</label>
+                    <input type="password" class="form-control mb-2 mr-sm-2" placeholder="Enter password" name="password" id="pass"><br>
+                    <input type="submit" class="btn btn-primary" value="Submit">
+                </form>
             </div>
-            <div class="col">
-                <h2 class="text-center">Enter without login</h2>
-                <button class="btn btn-primary"> Enter</button>
+            <div class="col text-center">
+                <h2 class="text-center" style="margin-bottom: 1em">Enter without login</h2>
+                <button class="btn btn-primary btn-block" style="height: 4em; font-size: 2em;">Enter</button>
             </div>
         </div>
     </div>
