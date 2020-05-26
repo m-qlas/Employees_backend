@@ -65,13 +65,13 @@ async function addAlien(){
 		method: "POST",
 		headers: {"Content-Type": "application/json"},
 		body: JSON.stringify(alien)
-	});
+	  });
 	
 	let resText = document.createElement("p");
 	resText.textContent = "Alien added to Database!";		
 	$(".container").last().append(resText);
 	return response.json;
-}
+};
 
 // function getFormData(){
 // 	// Display the key/value pairs
