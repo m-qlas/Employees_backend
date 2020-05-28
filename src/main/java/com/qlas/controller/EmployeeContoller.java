@@ -25,6 +25,7 @@ public class EmployeeContoller
 	@GetMapping("employees")
 	public List<Employee> getEmp() {
 		
+		//return eRepo.getEmployees();
 		return eRepo.findAll();
 	}
 	

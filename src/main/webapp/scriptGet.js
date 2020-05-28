@@ -50,9 +50,9 @@ function getAlien(){
 							delBtn[0][0].className = "btn btn-outline-danger";
 							for(let i=0; i<4;i++){row.insertCell(-1);}
 							let cells = row.querySelectorAll("td");
-							cells[0].append(json.aId);
-							cells[1].append(json.aName);
-							cells[2].append(json.aTech);
+							cells[0].append(json.id);
+							cells[1].append(json.name);
+							cells[2].append(json.tech);
 							cells[3].append(delBtn[0][0]);
 							for(let i=0; i<json.laptops.length;i++){
 								let row2 = tab2.tBodies[0].insertRow(-1);
@@ -72,7 +72,7 @@ function getAlien(){
 
 //Function to get all Aliens
 function getAliens(){
-	fetch("app/aliens")
+	fetch("employees")
 		.then(function (response) {
 			response.json()
 				.then(function (json) {
@@ -92,13 +92,14 @@ function getAliens(){
 							delBtns[i][0].textContent = "Delete";
 							delBtns[i][0].className = "btn btn-outline-danger";
 							
-							for(let j=0;j<4;j++){row.insertCell(-1);}
+							for(let j=0;j<5;j++){row.insertCell(-1);}
 							
 							let cells = row.querySelectorAll("td");
-							cells[0].append(json[i].aId);
-							cells[1].append(json[i].aName);
-							cells[2].append(json[i].aTech);
-							cells[3].append(delBtns[i][0]);
+							cells[0].append(json[i].id);
+							cells[1].append(json[i].name);
+							cells[2].append(json[i].tech);
+							cells[3].append(json[i].manager);
+							cells[4].append(delBtns[i][0]);
 						}
 						deleteAlien(delBtns);
 					},500);
