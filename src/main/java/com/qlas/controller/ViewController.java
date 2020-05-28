@@ -7,16 +7,23 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class ViewController {
 
-	@RequestMapping("/")
+	@RequestMapping("/get")
 	public String view() {
-		System.out.println("Default function started");
-		return "home.html";
+		System.out.println("Get controller");
+		return "get.html";
 	}
 	
 	@RequestMapping("/login")
-	public String view(@RequestParam("login") String login, @RequestParam("password") String pass) {
-		System.out.println("Parameterd function started");
-		System.out.println("Login: " + login + " Password: " + pass);
-		return "home.html";
+	public String loginPage()
+	{
+		System.out.println("Login controller");
+		return "login.html";
+	}
+	
+	@RequestMapping("/logout-succes")
+	public String logoutPage()
+	{
+		System.out.println("Logout controller");
+		return "logout.html";
 	}
 }

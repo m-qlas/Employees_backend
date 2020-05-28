@@ -25,7 +25,7 @@ getBtn.addEventListener("click",()=>{
 
 //Function to get selected Alien
 function getAlien(){
-	fetch("app/alien/" + in1.value)
+	fetch("employee/" + in1.value)
 		.then(function (response) {
 			response.json()
 				.then(function (json) {
@@ -48,12 +48,13 @@ function getAlien(){
 							delBtn.push([document.createElement("button"),json.aId]);
 							delBtn[0][0].textContent = "Delete";
 							delBtn[0][0].className = "btn btn-outline-danger";
-							for(let i=0; i<4;i++){row.insertCell(-1);}
+							for(let i=0; i<5;i++){row.insertCell(-1);}
 							let cells = row.querySelectorAll("td");
 							cells[0].append(json.id);
 							cells[1].append(json.name);
 							cells[2].append(json.tech);
-							cells[3].append(delBtn[0][0]);
+							cells[3].append(json.manager);
+							cells[4].append(delBtn[0][0]);
 							for(let i=0; i<json.laptops.length;i++){
 								let row2 = tab2.tBodies[0].insertRow(-1);
 								for(let j=0;j<4;j++){row2.insertCell(-1);}
@@ -114,8 +115,8 @@ function deleteAlien(tab){
 		tab[i][0].addEventListener("click",()=>{
 			let xhr = new XMLHttpRequest();
 			let id = tab[i][1];
-			console.log("Deleting Alien with ID: " + id); 
-			xhr.open("Delete", "app/alien/"+id);
+			console.log("Deleting Employee with ID: " + id); 
+			xhr.open("Delete", "employee/"+id);
 			xhr.send();
 			xhr.onload = ()=>{
 				getBtn.click();
