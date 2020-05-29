@@ -9,9 +9,6 @@ import com.qlas.model.Employee;
 
 public interface EmpRepo extends JpaRepository<Employee, Integer>
 {
-//	@Query("SELECT a.id, a.name, a.tech, b.name as Manager\n" + 
-//			"FROM employee a, employee b\n" + 
-//			"WHERE a.manager_id = b.id")
-//	List<Employee> getEmployees();
-
+	@Query("SELECT a.manager FROM Employee a, Employee b WHERE a.manager = b.id")
+	List<String> getEmps();
 }

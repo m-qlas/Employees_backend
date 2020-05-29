@@ -53,7 +53,7 @@ function getAlien(){
 							cells[0].append(json.id);
 							cells[1].append(json.name);
 							cells[2].append(json.tech);
-							cells[3].append(json.manager);
+							cells[3].append(json.manager_id);
 							cells[4].append(delBtn[0][0]);
 							for(let i=0; i<json.laptops.length;i++){
 								let row2 = tab2.tBodies[0].insertRow(-1);
@@ -99,7 +99,7 @@ function getAliens(){
 							cells[0].append(json[i].id);
 							cells[1].append(json[i].name);
 							cells[2].append(json[i].tech);
-							cells[3].append(json[i].manager);
+							cells[3].append(json[i].manager_id);
 							cells[4].append(delBtns[i][0]);
 						}
 						deleteAlien(delBtns);
