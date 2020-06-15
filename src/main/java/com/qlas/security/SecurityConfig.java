@@ -32,18 +32,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
 	@Override
 	protected void configure(HttpSecurity http) throws Exception 
 	{
-		http.csrf().disable()
-			.authorizeRequests().antMatchers("/login").permitAll()
-			.anyRequest().authenticated()
-			.and()
-			.formLogin()
-			.loginPage("/login").permitAll()
-			.defaultSuccessUrl("/get",true)
-			.and()
-			.logout().invalidateHttpSession(true)
-			.clearAuthentication(true)
-			.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-			.logoutSuccessUrl("/logout-succes").permitAll().deleteCookies("JSESSIONID");
+//		http.csrf().disable()
+//			.authorizeRequests().antMatchers("/login").permitAll()
+//			.anyRequest().authenticated()
+//			.and()
+//			.formLogin()
+//			.loginPage("/login").permitAll()
+//			.defaultSuccessUrl("/get",true)
+//			.and()
+//			.logout().invalidateHttpSession(true)
+//			.clearAuthentication(true)
+//			.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+//			.logoutSuccessUrl("/logout-succes").permitAll().deleteCookies("JSESSIONID");
 	}
 	
 	

@@ -23,10 +23,10 @@ public class EmployeeContoller
 	SalaryRepo sRepo;
 	
 	@GetMapping("employees")
-	public List<String> getEmp() {
+	public List<Employee> getEmp() {
 		
-		return eRepo.getEmps();
-		//return eRepo.findAll();
+		//return eRepo.getEmps();
+		return eRepo.findAll();
 	}
 	
 	@GetMapping("employee/{id}")

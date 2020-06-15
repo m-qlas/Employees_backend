@@ -11,12 +11,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -37,8 +42,10 @@ public class Employee
 	@OneToOne(mappedBy = "employee")
 	private Salary salary;
 	
+
 	@JsonBackReference
 	@ManyToOne
+	@JoinColumn(name="manager_id")
 	private Manager manager;
 	
 	public int getId() {
@@ -52,6 +59,10 @@ public class Employee
 	}
 	public void setManager(Manager manager) {
 		this.manager = manager;
+	}
+	
+	public String getManagerName() {
+		return manager.getName();
 	}
 	
 	public String getName() {
