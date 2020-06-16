@@ -11,40 +11,41 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.qlas.model.Employee;
+import com.qlas.model.Manager;
 import com.qlas.repository.EmpRepo;
 import com.qlas.repository.SalaryRepo;
 
 @RestController
-public class EmployeeContoller 
-{
+public class EmployeeContoller {
 	@Autowired
 	EmpRepo eRepo;
 	@Autowired
 	SalaryRepo sRepo;
-	
+
 	@GetMapping("employees")
 	public List<Employee> getEmp() {
-		
-		//return eRepo.getEmps();
+
+		// return eRepo.getEmps();
 		return eRepo.findAll();
 	}
-	
+
 	@GetMapping("employee/{id}")
-	public Employee getEmp(@PathVariable int id)
-	{
-		return eRepo.findById(id).get();
+	public Employee getEmp(@PathVariable int id) {
+		if (eRepo.findById(id).isPresent())
+			return eRepo.findById(id).get();
+		else
+			return new Manager();
+
 	}
-	
+
 	@PostMapping("employee")
-	public Employee addEmp(@RequestBody Employee emp)
-	{
+	public Employee addEmp(@RequestBody Employee emp) {
 		eRepo.save(emp);
 		return emp;
 	}
-	
+
 	@DeleteMapping("employee/{id}")
-	public String deleteEmp(@PathVariable int id)
-	{
+	public String deleteEmp(@PathVariable int id) {
 		eRepo.deleteById(id);
 		return "Employee deleted";
 	}

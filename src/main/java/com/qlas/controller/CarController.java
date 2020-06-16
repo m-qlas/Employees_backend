@@ -10,15 +10,13 @@ import com.qlas.model.Car;
 import com.qlas.repository.CarRepo;
 
 @RestController
-public class CarController 
-{
+public class CarController {
 	@Autowired
 	CarRepo cRepo;
-	
+
 	@GetMapping("cars")
-	public List<Car> getCats()
-	{
-		
+	public List<Car> getCats() {
+
 		return cRepo.findAll();
 	}
 
