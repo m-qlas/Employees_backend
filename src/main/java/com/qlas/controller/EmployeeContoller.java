@@ -11,12 +11,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.qlas.model.Employee;
+import com.qlas.model.Laptop;
 import com.qlas.model.Manager;
 import com.qlas.repository.EmpRepo;
 import com.qlas.repository.SalaryRepo;
 
 @RestController
 public class EmployeeContoller {
+
 	@Autowired
 	EmpRepo eRepo;
 	@Autowired
@@ -46,8 +48,15 @@ public class EmployeeContoller {
 
 	@DeleteMapping("employee/{id}")
 	public String deleteEmp(@PathVariable int id) {
+		System.out.println("Deleting started");
+
+		List<Laptop> laps = eRepo.findById(id).get().getLaps();
+		for (Laptop l : laps) {
+			l.setEmployee(null);
+			System.out.println("Laptop nr: " + l.getlId() + " is free to use now");
+		}
 		eRepo.deleteById(id);
-		return "Employee deleted";
+		return "Employee: " + id + " deleted";
 	}
 
 }

@@ -2,6 +2,7 @@ package com.qlas.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
 import javax.persistence.DiscriminatorValue;
@@ -31,11 +32,11 @@ public class Employee {
 	private String tech;
 
 	@JsonManagedReference
-	@OneToMany(mappedBy = "employee")
+	@OneToMany(mappedBy = "employee") // , cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Laptop> laps;
 
 	@JsonManagedReference
-	@OneToOne(mappedBy = "employee")
+	@OneToOne(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true)
 	private Salary salary;
 
 	@JsonBackReference

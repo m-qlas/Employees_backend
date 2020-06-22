@@ -1,5 +1,6 @@
 package com.qlas.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,15 +11,26 @@ import com.qlas.model.Laptop;
 import com.qlas.repository.LaptopRepo;
 
 @RestController
-public class LaptopController 
-{
+public class LaptopController {
 	@Autowired
 	LaptopRepo lRepo;
-	
+
 	@GetMapping("laptops")
-	public List<Laptop> getLaps()
-	{
+	public List<Laptop> getLaps() {
 		return lRepo.findAll();
+	}
+
+	@GetMapping("laps")
+	public List<Laptop> getFreeLaps() {
+		List<Laptop> freeLaps = lRepo.findAll();
+		List<Laptop> toDelete = new ArrayList<>();
+		for (Laptop l : freeLaps) {
+			if (l.getEmployee() != null) {
+				toDelete.add(l);
+			}
+		}
+		freeLaps.removeAll(toDelete);
+		return freeLaps;
 	}
 
 }
