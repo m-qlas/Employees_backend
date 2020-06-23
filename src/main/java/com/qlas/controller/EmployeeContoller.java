@@ -14,6 +14,7 @@ import com.qlas.model.Employee;
 import com.qlas.model.Laptop;
 import com.qlas.model.Manager;
 import com.qlas.repository.EmpRepo;
+import com.qlas.repository.LaptopRepo;
 import com.qlas.repository.SalaryRepo;
 
 @RestController
@@ -23,6 +24,8 @@ public class EmployeeContoller {
 	EmpRepo eRepo;
 	@Autowired
 	SalaryRepo sRepo;
+	@Autowired
+	LaptopRepo lRepo;
 
 	@GetMapping("employees")
 	public List<Employee> getEmp() {
@@ -37,12 +40,14 @@ public class EmployeeContoller {
 			return eRepo.findById(id).get();
 		else
 			return new Manager();
-
 	}
 
 	@PostMapping("employee")
 	public Employee addEmp(@RequestBody Employee emp) {
 		eRepo.save(emp);
+		
+		int lId = emp.getLaps().get(0).getlId();
+		lRepo.changeLaptopOwner(emp, lId);
 		return emp;
 	}
 
