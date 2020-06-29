@@ -1,5 +1,8 @@
 package com.qlas.security;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -10,6 +13,9 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
+import org.springframework.security.web.savedrequest.RequestCache;
+import org.springframework.security.web.savedrequest.SimpleSavedRequest;
 
 @Configuration
 @EnableWebSecurity
@@ -39,6 +45,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //			.clearAuthentication(true)
 //			.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
 //			.logoutSuccessUrl("/logout-succes").permitAll().deleteCookies("JSESSIONID");
+	}
+
+	@Bean
+	public RequestCache refererRequestCache() {
+		return new HttpSessionRequestCache() {
+			@Override
+			public void saveRequest(HttpServletRequest request, HttpServletResponse response) {
+				String referrer = request.getHeader("referer");
+				if (referrer != null) {
+					request.getSession().setAttribute("SPRING_SECURITY_SAVED_REQUEST",
+							new SimpleSavedRequest(referrer));
+				}
+			}
+		};
 	}
 
 }
