@@ -27,12 +27,14 @@ public class MyUserDetails implements UserDetails {
 	public String getPassword() {
 		// TODO Auto-generated method stub
 		return user.getPassword();
+		//return "123";
 	}
 
 	@Override
 	public String getUsername() {
 		// TODO Auto-generated method stub
 		return user.getUsername();
+		//return "admin";
 	}
 
 	@Override
