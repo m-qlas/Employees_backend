@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -11,6 +12,7 @@ import com.qlas.model.Laptop;
 import com.qlas.repository.LaptopRepo;
 
 @RestController
+@CrossOrigin(origins = { "http://localhost:3000" })
 public class LaptopController {
 	@Autowired
 	LaptopRepo lRepo;
