@@ -1,5 +1,6 @@
 package com.qlas.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,12 +37,31 @@ public class EmployeeContoller {
 		return eRepo.findAll();
 	}
 
-	@GetMapping("employee/{id}")
+	@GetMapping("employee/id/{id}")
 	public Employee getEmp(@PathVariable int id) {
+		System.out.println("Finding by ID");
 		if (eRepo.findById(id).isPresent())
 			return eRepo.findById(id).get();
 		else
 			return new Manager();
+	}
+	
+	@GetMapping("employee/name/{name}")
+	public List<Employee> getEmpByName(@PathVariable String name) {
+		System.out.println("Finding by Name");
+		if (eRepo.findByName(name)!=null)
+			return eRepo.findByName(name);
+		else
+			return new ArrayList<Employee>();
+	}
+	
+	@GetMapping("employee/tech/{tech}")
+	public List<Employee> getEmpByTech(@PathVariable String tech) {
+		System.out.println("Finding by Tech");
+		if (eRepo.findByTech(tech)!=null)
+			return eRepo.findByTech(tech);
+		else
+			return new ArrayList<Employee>();
 	}
 
 	@PostMapping("employee")
