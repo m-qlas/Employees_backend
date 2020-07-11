@@ -15,6 +15,8 @@ public interface EmpRepo extends JpaRepository<Employee, Integer>
 		)
 	public List<String> getEmps();
 	
+	public List<Employee> findById(int id);
+	
 	public List<Employee> findByName(String name);
 
 	public List<Employee> findByTech(String tech);

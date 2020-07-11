@@ -38,12 +38,12 @@ public class EmployeeContoller {
 	}
 
 	@GetMapping("employee/id/{id}")
-	public Employee getEmp(@PathVariable int id) {
+	public List<Employee> getEmp(@PathVariable int id) {
 		System.out.println("Finding by ID");
-		if (eRepo.findById(id).isPresent())
-			return eRepo.findById(id).get();
+		if (eRepo.findById(id)!=null)
+			return eRepo.findById(id);
 		else
-			return new Manager();
+			return new ArrayList<Employee>();
 	}
 	
 	@GetMapping("employee/name/{name}")
@@ -77,7 +77,7 @@ public class EmployeeContoller {
 	public String deleteEmp(@PathVariable int id) {
 		System.out.println("Deleting started");
 
-		List<Laptop> laps = eRepo.findById(id).get().getLaps();
+		List<Laptop> laps = eRepo.findById(id).get(0).getLaps();
 		for (Laptop l : laps) {
 			l.setEmployee(null);
 			System.out.println("Laptop nr: " + l.getlId() + " is free to use now");
