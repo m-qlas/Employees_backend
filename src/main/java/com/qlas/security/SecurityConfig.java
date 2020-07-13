@@ -1,9 +1,5 @@
 package com.qlas.security;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,11 +11,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
-import org.springframework.security.web.session.SessionManagementFilter;
-import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.CorsConfigurationSource;
-import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 @Configuration
 @EnableWebSecurity
@@ -47,10 +38,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .csrf().disable()   
         .cors()
         .and().authorizeRequests()
+        .antMatchers("/h2-console/**").permitAll()
+        .and().authorizeRequests()
         .antMatchers(HttpMethod.OPTIONS,"/**").permitAll()
+        .and().authorizeRequests()
         .anyRequest().authenticated()
         .and().formLogin()
-        .and().httpBasic().authenticationEntryPoint(restAuthEntryPoint);
+        .and().httpBasic().authenticationEntryPoint(restAuthEntryPoint)
+        .and().headers().frameOptions().disable();
     }
 	
 
