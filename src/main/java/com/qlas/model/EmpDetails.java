@@ -11,9 +11,9 @@ import javax.persistence.OneToOne;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
-public class Salary {
+public class EmpDetails {
 	@Id
-	private int sId;
+	private int id;
 
 	@JsonBackReference
 	@OneToOne
@@ -21,34 +21,25 @@ public class Salary {
 	private Employee employee;
 
 	@Column(columnDefinition = "DATE")
-	private Date dateFrom;
+	private Date hireDate;
 
-	@Column(columnDefinition = "DATE")
-	private Date dateTo;
 	private int salary;
 
-	public int getsId() {
-		return sId;
+	
+	public int getId() {
+		return id;
 	}
 
-	public void setsId(int sId) {
-		this.sId = sId;
+	public void setId(int id) {
+		this.id = id;
 	}
 
-	public Date getDateFrom() {
-		return dateFrom;
+	public Date getHireDate() {
+		return hireDate;
 	}
 
-	public void setDateFrom(Date dateFrom) {
-		this.dateFrom = dateFrom;
-	}
-
-	public Date getDateTo() {
-		return dateTo;
-	}
-
-	public void setDateTo(Date dateTo) {
-		this.dateTo = dateTo;
+	public void setHireDate(Date hireDate) {
+		this.hireDate = hireDate;
 	}
 
 	public int getSalary() {
@@ -69,8 +60,9 @@ public class Salary {
 
 	@Override
 	public String toString() {
-		return "Salary [dateFrom=" + dateFrom + ", dateTo=" + dateTo + ", salary=" + salary + ", employee=" + employee
+		return "HireDetails [id=" + id + ", employee=" + employee + ", hireDate=" + hireDate + ", salary=" + salary
 				+ "]";
 	}
 
+	
 }

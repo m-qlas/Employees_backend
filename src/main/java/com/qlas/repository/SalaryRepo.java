@@ -4,7 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.qlas.model.*;
 
-public interface SalaryRepo extends JpaRepository<Salary, Integer> 
+public interface SalaryRepo extends JpaRepository<EmpDetails, Integer> 
 {
 
 }

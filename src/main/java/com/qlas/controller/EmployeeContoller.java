@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.qlas.model.Employee;
 import com.qlas.model.Laptop;
-import com.qlas.model.Manager;
 import com.qlas.repository.EmpRepo;
 import com.qlas.repository.LaptopRepo;
 import com.qlas.repository.SalaryRepo;
@@ -31,10 +30,10 @@ public class EmployeeContoller {
 	LaptopRepo lRepo;
 
 	@GetMapping("employees")
-	public List<Employee> getEmp() {
+	public List<Object> getEmp() {
 
-		// return eRepo.getEmps();
-		return eRepo.findAll();
+		return eRepo.getEmps();
+		//return eRepo.findAll();
 	}
 
 	@GetMapping("employee/id/{id}")
@@ -46,20 +45,29 @@ public class EmployeeContoller {
 			return new ArrayList<Employee>();
 	}
 	
-	@GetMapping("employee/name/{name}")
-	public List<Employee> getEmpByName(@PathVariable String name) {
-		System.out.println("Finding by Name");
-		if (eRepo.findByName(name)!=null)
-			return eRepo.findByName(name);
+	@GetMapping("employee/firstName/{fName}")
+	public List<Employee> getEmpByFirstName(@PathVariable String fName) {
+		System.out.println("Finding by first name");
+		if (eRepo.findByFirstName(fName)!=null)
+			return eRepo.findByFirstName(fName);
 		else
 			return new ArrayList<Employee>();
 	}
 	
-	@GetMapping("employee/tech/{tech}")
-	public List<Employee> getEmpByTech(@PathVariable String tech) {
-		System.out.println("Finding by Tech");
-		if (eRepo.findByTech(tech)!=null)
-			return eRepo.findByTech(tech);
+	@GetMapping("employee/lastName/{lName}")
+	public List<Employee> getEmpByLastName(@PathVariable String lName) {
+		System.out.println("Finding by first name");
+		if (eRepo.findByLastName(lName)!=null)
+			return eRepo.findByLastName(lName);
+		else
+			return new ArrayList<Employee>();
+	}
+	
+	@GetMapping("employee/department/{dept}")
+	public List<Employee> getEmpByTech(@PathVariable String dept) {
+		System.out.println("Finding by department");
+		if (eRepo.findByDepartment(dept)!=null)
+			return eRepo.findByDepartment(dept);
 		else
 			return new ArrayList<Employee>();
 	}

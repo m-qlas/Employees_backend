@@ -12,7 +12,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -28,22 +27,27 @@ public class Employee {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private String name;
-	private String tech;
-
+	
+	private String firstName;
+	private String lastName;
+	
 	@JsonManagedReference
 	@OneToMany(mappedBy = "employee") // , cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Laptop> laps;
 
 	@JsonManagedReference
 	@OneToOne(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true)
-	private Salary salary;
+	private EmpDetails eDetails;
 
+//	@JsonBackReference
+//	@ManyToOne
+//	@JoinColumn(name = "manager_id")
+//	private Manager manager;
+	
 	@JsonBackReference
 	@ManyToOne
-	@JoinColumn(name = "manager_id")
-	private Manager manager;
-
+	private Department department;
+	
 	public int getId() {
 		return id;
 	}
@@ -52,35 +56,36 @@ public class Employee {
 		this.id = id;
 	}
 
-	public Manager getManager() {
-		return manager;
+//	public Manager getManager() {
+//		return manager;
+//	}
+//
+//	public void setManager(Manager manager) {
+//		this.manager = manager;
+//	}
+//
+//	public String getManagerFirstName() {
+//
+//		return manager.getFirstName();
+//	}
+
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setManager(Manager manager) {
-		this.manager = manager;
+	public void setFirstName(String fName) {
+		this.firstName = fName;
+	}
+	
+	public String getLastName() {
+		return lastName;
 	}
 
-	public String getManagerName() {
-
-		return manager.getName();
+	public void setLastName(String lName) {
+		this.lastName = lName;
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getTech() {
-		return tech;
-	}
-
-	public void setTech(String tech) {
-		this.tech = tech;
-	}
-
+	
 	public List<Laptop> getLaps() {
 		return laps;
 	}
@@ -88,12 +93,22 @@ public class Employee {
 	public void setLaps(List<Laptop> laps) {
 		this.laps = laps;
 	}
-
-	public Salary getSalary() {
-		return salary;
+	
+	public Department getDepartment() {
+		return department;
 	}
 
-	public void setSalary(Salary salary) {
-		this.salary = salary;
+	public void setDepartment(Department department) {
+		this.department = department;
 	}
+
+	public EmpDetails geteDetails() {
+		return eDetails;
+	}
+
+	public void seteDetails(EmpDetails eDetails) {
+		this.eDetails = eDetails;
+	}
+	
+	
 }

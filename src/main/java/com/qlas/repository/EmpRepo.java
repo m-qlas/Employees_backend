@@ -9,15 +9,21 @@ import com.qlas.model.Employee;
 
 public interface EmpRepo extends JpaRepository<Employee, Integer>
 {
-	@Query(
-			value = "SELECT a.id, a.name, a.tech, b.name FROM employee a, employee b WHERE a.manager_id = b.id", 
-			nativeQuery = true
-		)
-	public List<String> getEmps();
+//	@Query(
+//			value = "SELECT a.id, a.first_name, a.last_name, a.department, b.first_name FROM employee a, employee b WHERE a.manager_id = b.id", 
+//			nativeQuery = true
+//		)
+//	public List<String> getEmps();
+	
+	
+	@Query(value = "select e, d.name as 'name'  from Employee e join e.department d")
+	public List<Object> getEmps();
 	
 	public List<Employee> findById(int id);
 	
-	public List<Employee> findByName(String name);
+	public List<Employee> findByFirstName(String fName);
+	
+	public List<Employee> findByLastName(String lName);
 
-	public List<Employee> findByTech(String tech);
+	public List<Employee> findByDepartment(String dept);
 }

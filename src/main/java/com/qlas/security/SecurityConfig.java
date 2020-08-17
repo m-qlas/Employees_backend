@@ -3,7 +3,6 @@ package com.qlas.security;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -34,18 +33,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
-        .csrf().disable()   
-        .cors()
-        .and().authorizeRequests()
-        .antMatchers("/h2-console/**").permitAll()
-        .and().authorizeRequests()
-        .antMatchers(HttpMethod.OPTIONS,"/**").permitAll()
-        .and().authorizeRequests()
-        .anyRequest().authenticated()
-        .and().formLogin()
-        .and().httpBasic().authenticationEntryPoint(restAuthEntryPoint)
-        .and().headers().frameOptions().disable();
+//        http
+//        .csrf().disable()   
+//        .cors()
+//        .and().authorizeRequests()
+//        .antMatchers("/h2-console/**").permitAll()
+//        .and().authorizeRequests()
+//        .antMatchers(HttpMethod.OPTIONS,"/**").permitAll()
+//        .and().authorizeRequests()
+//        .anyRequest().authenticated()
+//        .and().formLogin()
+//        .and().httpBasic().authenticationEntryPoint(restAuthEntryPoint)
+//        .and().headers().frameOptions().disable();
     }
 	
 
