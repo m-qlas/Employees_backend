@@ -16,9 +16,9 @@ public class Department {
 	@Id
 	private String name;
 	
-	@JsonManagedReference
-	@OneToOne(mappedBy = "department")
-	private Manager manager;
+//	@JsonManagedReference
+//	@OneToOne(mappedBy = "department")
+//	private Manager manager;
 	
 	@JsonManagedReference
 	@OneToMany(mappedBy = "department", fetch = FetchType.LAZY)
@@ -30,12 +30,7 @@ public class Department {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Manager getManager() {
-		return manager;
-	}
-	public void setManager(Manager manager) {
-		this.manager = manager;
-	}
+	
 	
 	
 	

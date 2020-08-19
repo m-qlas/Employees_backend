@@ -12,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -39,10 +40,10 @@ public class Employee {
 	@OneToOne(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true)
 	private EmpDetails eDetails;
 
-//	@JsonBackReference
-//	@ManyToOne
-//	@JoinColumn(name = "manager_id")
-//	private Manager manager;
+	@JsonBackReference
+	@ManyToOne
+	@JoinColumn(name = "manager_id")
+	private Manager manager;
 	
 	@JsonBackReference
 	@ManyToOne
@@ -56,14 +57,14 @@ public class Employee {
 		this.id = id;
 	}
 
-//	public Manager getManager() {
-//		return manager;
-//	}
-//
-//	public void setManager(Manager manager) {
-//		this.manager = manager;
-//	}
-//
+	public Manager getManager() {
+		return manager;
+	}
+
+	public void setManager(Manager manager) {
+		this.manager = manager;
+	}
+
 //	public String getManagerFirstName() {
 //
 //		return manager.getFirstName();
@@ -96,6 +97,10 @@ public class Employee {
 	
 	public Department getDepartment() {
 		return department;
+	}
+	
+	public String getDepartmentName() {
+		return department.getName();
 	}
 
 	public void setDepartment(Department department) {

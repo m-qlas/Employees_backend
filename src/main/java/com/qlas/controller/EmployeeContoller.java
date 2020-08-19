@@ -30,10 +30,10 @@ public class EmployeeContoller {
 	LaptopRepo lRepo;
 
 	@GetMapping("employees")
-	public List<Object> getEmp() {
+	public List<Employee> getEmp() {
 
-		return eRepo.getEmps();
-		//return eRepo.findAll();
+		//return eRepo.getEmps();
+		return eRepo.findAll();
 	}
 
 	@GetMapping("employee/id/{id}")
@@ -66,8 +66,8 @@ public class EmployeeContoller {
 	@GetMapping("employee/department/{dept}")
 	public List<Employee> getEmpByTech(@PathVariable String dept) {
 		System.out.println("Finding by department");
-		if (eRepo.findByDepartment(dept)!=null)
-			return eRepo.findByDepartment(dept);
+		if (eRepo.findByDept(dept)!=null)
+			return eRepo.findByDept(dept);
 		else
 			return new ArrayList<Employee>();
 	}

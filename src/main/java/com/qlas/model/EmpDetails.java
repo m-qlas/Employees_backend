@@ -24,6 +24,7 @@ public class EmpDetails {
 	private Date hireDate;
 
 	private int salary;
+	private String role; 
 
 	
 	public int getId() {
@@ -50,6 +51,15 @@ public class EmpDetails {
 		this.salary = salary;
 	}
 
+	
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
 	public Employee getEmployee() {
 		return employee;
 	}
@@ -60,9 +70,11 @@ public class EmpDetails {
 
 	@Override
 	public String toString() {
-		return "HireDetails [id=" + id + ", employee=" + employee + ", hireDate=" + hireDate + ", salary=" + salary
-				+ "]";
+		return "EmpDetails [id=" + id + ", employee=" + employee + ", hireDate=" + hireDate + ", salary=" + salary
+				+ ", role=" + role + "]";
 	}
+
+	
 
 	
 }

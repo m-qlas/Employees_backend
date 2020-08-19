@@ -16,7 +16,7 @@ public interface EmpRepo extends JpaRepository<Employee, Integer>
 //	public List<String> getEmps();
 	
 	
-	@Query(value = "select e, d.name as 'name'  from Employee e join e.department d")
+	@Query(value = "select e, d from Employee e join e.department d")
 	public List<Object> getEmps();
 	
 	public List<Employee> findById(int id);
@@ -25,5 +25,6 @@ public interface EmpRepo extends JpaRepository<Employee, Integer>
 	
 	public List<Employee> findByLastName(String lName);
 
-	public List<Employee> findByDepartment(String dept);
+	@Query(value = "select e from Employee e join e.department d WHERE d.name=?1")
+	public List<Employee> findByDept(String dept);
 }
