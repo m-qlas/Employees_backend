@@ -39,6 +39,7 @@ public class LaptopController {
 	
 	@PostMapping("laptop")
 	public Laptop addLaptop(@RequestBody Laptop lap) {
+		System.out.println(lap);
 		return lRepo.save(lap);
 	}
 

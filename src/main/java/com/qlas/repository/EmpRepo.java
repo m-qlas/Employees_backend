@@ -24,7 +24,7 @@ public interface EmpRepo extends JpaRepository<Employee, Integer>
 	public List<Employee> findByFirstName(String fName);
 	
 	public List<Employee> findByLastName(String lName);
-
+	
 	@Query(value = "select e from Employee e join e.department d WHERE d.name=?1")
 	public List<Employee> findByDept(String dept);
 }
