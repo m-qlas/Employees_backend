@@ -20,7 +20,7 @@ public class Department {
 //	@OneToOne(mappedBy = "department")
 //	private Manager manager;
 	
-	@JsonManagedReference
+	@JsonManagedReference(value="empDepRef")
 	@OneToMany(mappedBy = "department", fetch = FetchType.LAZY)
 	private List<Employee> emps;
 	

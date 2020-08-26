@@ -15,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 @DiscriminatorValue("M")
 public class Manager extends Employee {
 
-	@JsonManagedReference
+	@JsonManagedReference(value="empManRef")
 	@OneToMany(mappedBy = "manager")
 	private List<Employee> subordinates;
 

@@ -32,20 +32,20 @@ public class Employee {
 	private String firstName;
 	private String lastName;
 	
-	@JsonManagedReference
+	@JsonManagedReference(value= "lapsEmpRef")
 	@OneToMany(mappedBy = "employee") // , cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Laptop> laps;
 
-	@JsonManagedReference
+	@JsonManagedReference(value = "detEmpRef")
 	@OneToOne(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true)
 	private EmpDetails eDetails;
 
-	@JsonBackReference
+	@JsonBackReference(value="empManRef")
 	@ManyToOne
 	@JoinColumn(name = "manager_id")
 	private Manager manager;
 	
-	@JsonBackReference
+	@JsonBackReference(value="empDepRef")
 	@ManyToOne
 	private Department department;
 	

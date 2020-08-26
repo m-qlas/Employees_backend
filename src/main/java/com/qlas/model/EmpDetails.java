@@ -15,7 +15,7 @@ public class EmpDetails {
 	@Id
 	private int id;
 
-	@JsonBackReference
+	@JsonBackReference(value = "detEmpRef")
 	@OneToOne
 	@MapsId
 	private Employee employee;

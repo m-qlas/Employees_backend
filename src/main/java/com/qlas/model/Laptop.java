@@ -13,7 +13,7 @@ public class Laptop {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int lId;
-	@JsonBackReference
+	@JsonBackReference(value = "lapsEmpRef")
 	@ManyToOne
 	private Employee employee;
 	private String brand;
