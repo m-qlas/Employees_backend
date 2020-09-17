@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.qlas.model.Manager;
@@ -21,6 +22,11 @@ public class ManagerController
 	public List<Manager> getMan()
 	{
 		return mRepo.findAll();
+	}
+	
+	@GetMapping("manager/{deptName}")
+	public Manager getByDept(@PathVariable String deptName) {
+		return mRepo.findByDept(deptName);
 	}
 
 }

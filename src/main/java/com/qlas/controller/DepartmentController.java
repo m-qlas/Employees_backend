@@ -22,4 +22,6 @@ public class DepartmentController {
 	public List<Department> getDeps(){
 		return dRepo.findAll(); 
 	}
+	
+	
 }

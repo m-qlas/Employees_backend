@@ -30,6 +30,12 @@ public class Department {
 	public void setName(String name) {
 		this.name = name;
 	}
+	public List<Employee> getEmps() {
+		return emps;
+	}
+	public void setEmps(List<Employee> emps) {
+		this.emps = emps;
+	}
 	
 	
 	

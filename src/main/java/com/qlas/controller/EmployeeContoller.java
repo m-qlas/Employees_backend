@@ -71,6 +71,11 @@ public class EmployeeContoller {
 		else
 			return new ArrayList<Employee>();
 	}
+	
+	@GetMapping("employee/role/{role}")
+	public List<Employee> getEmyByRole(@PathVariable String role){
+		return eRepo.findByRole(role);
+	}
 
 	@PostMapping("employee")
 	public Employee addEmp(@RequestBody Employee emp) {
