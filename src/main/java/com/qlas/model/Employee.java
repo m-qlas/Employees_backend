@@ -65,10 +65,6 @@ public class Employee {
 		this.manager = manager;
 	}
 
-//	public String getManagerFirstName() {
-//
-//		return manager.getFirstName();
-//	}
 
 	public String getFirstName() {
 		return firstName;
