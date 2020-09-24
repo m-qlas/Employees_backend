@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.qlas.model.Employee;
 import com.qlas.model.Laptop;
 import com.qlas.repository.LaptopRepo;
 
@@ -42,6 +43,13 @@ public class LaptopController {
 	@PutMapping("laptop/{id}")
 	public Laptop setLapFree(@PathVariable int id) {
 		lRepo.changeLaptopOwner(null, id);
+		Laptop l = lRepo.findById(id).get();
+		return l;
+	}
+	
+	@PutMapping("laptop/update/{id}")
+	public Laptop changeOwner(@RequestBody Employee emp, @PathVariable int id) {
+		lRepo.changeLaptopOwner(emp, id);
 		Laptop l = lRepo.findById(id).get();
 		return l;
 	}
